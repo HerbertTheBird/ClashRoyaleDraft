@@ -32,6 +32,7 @@ start = input("do you start\n")
 them = []
 us = []
 turn = start == "yes"
+order = [True, False, False, True, True, False, False, True, True, False, False, True, True, False, True, False]
 def score(card):
     syn_score = 0
     for i in us:
@@ -42,8 +43,8 @@ def score(card):
     if card == 79:
         print(syn_score, counter_score)
     return (syn_score + counter_score)**2+usage[card]/2
-while len(them) < 8 or len(us) < 8:
-    if turn:
+for round in order:
+    if turn == order:
         scores = []
         for i in range(len(cards)):
             if i in us or i in them:
