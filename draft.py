@@ -40,7 +40,13 @@ def score(card):
     counter_score = 0
     for i in them:
         counter_score += counter[card][i]
-    return (syn_score + counter_score)**2+usage[card]/2
+    if len(us) > 0:
+        syn_score = syn_score / len(us)
+    if len(them) > 0:
+        counter_score = counter_score / len(them)
+    else:
+        counter_score = 0.5
+    return (syn_score**0.5 /2 + (counter_score)*10-4)**2+usage[card]/2
 for r in order:
     if turn == r:
         scores = []
