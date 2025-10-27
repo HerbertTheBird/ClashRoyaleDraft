@@ -40,11 +40,9 @@ def score(card):
     counter_score = 0
     for i in them:
         counter_score += counter[card][i]
-    if card == 79:
-        print(syn_score, counter_score)
     return (syn_score + counter_score)**2+usage[card]/2
-for round in order:
-    if turn == order:
+for r in order:
+    if turn == r:
         scores = []
         for i in range(len(cards)):
             if i in us or i in them:
@@ -52,7 +50,7 @@ for round in order:
             scores.append((i, score(i)))
         scores.sort(key=lambda x: x[1], reverse=True)
         for i in range(10):
-            print(cards[scores[i][0]], scores[i][1])
+            print(cards[scores[i][0]], round(scores[i][1], 3))
         while True:
             card = input("what did you pick\n").replace(" ", "").replace(".", "").lower()
             found = False
@@ -74,5 +72,4 @@ for round in order:
                     break
             if found:
                 break
-    turn = not turn
 
